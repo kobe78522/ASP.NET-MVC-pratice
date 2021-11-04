@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbshoppingCarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tAdmin">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tMember">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tOrder">
+    <Key>
+      <PropertyRef Name="fOrderGuid" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fOrderGuid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fReceiver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tOrderDetail" Relationship="Self.FK_tOrderDetail_tOrder" FromRole="tOrder" ToRole="tOrderDetail" />
+  </EntityType>
+  <EntityType Name="tOrderDetail">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fOrderGuid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPrice" Type="Int32" />
+    <Property Name="fQty" Type="Int32" />
+    <Property Name="fIsApproved" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tOrder" Relationship="Self.FK_tOrderDetail_tOrder" FromRole="tOrderDetail" ToRole="tOrder" />
+  </EntityType>
+  <EntityType Name="tProduct">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fPId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fPrice" Type="Int32" />
+    <Property Name="fImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fContent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="fQuantity" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_tOrderDetail_tOrder">
+    <End Role="tOrder" Type="Self.tOrder" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tOrderDetail" Type="Self.tOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tOrder">
+        <PropertyRef Name="fOrderGuid" />
+      </Principal>
+      <Dependent Role="tOrderDetail">
+        <PropertyRef Name="fOrderGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbshoppingCarEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tAdmin" EntityType="Self.tAdmin" />
+    <EntitySet Name="tMember" EntityType="Self.tMember" />
+    <EntitySet Name="tOrder" EntityType="Self.tOrder" />
+    <EntitySet Name="tOrderDetail" EntityType="Self.tOrderDetail" />
+    <EntitySet Name="tProduct" EntityType="Self.tProduct" />
+    <AssociationSet Name="FK_tOrderDetail_tOrder" Association="Self.FK_tOrderDetail_tOrder">
+      <End Role="tOrder" EntitySet="tOrder" />
+      <End Role="tOrderDetail" EntitySet="tOrderDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

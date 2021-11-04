@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbshoppingCarModelStoreContainer" CdmEntityContainer="dbshoppingCarEntities">
+    <EntitySetMapping Name="tAdmin">
+      <EntityTypeMapping TypeName="dbshoppingCarModel.tAdmin">
+        <MappingFragment StoreEntitySet="tAdmin">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fUserId" ColumnName="fUserId" />
+          <ScalarProperty Name="fPwd" ColumnName="fPwd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tMember">
+      <EntityTypeMapping TypeName="dbshoppingCarModel.tMember">
+        <MappingFragment StoreEntitySet="tMember">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fUserId" ColumnName="fUserId" />
+          <ScalarProperty Name="fPwd" ColumnName="fPwd" />
+          <ScalarProperty Name="fName" ColumnName="fName" />
+          <ScalarProperty Name="fEmail" ColumnName="fEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tOrder">
+      <EntityTypeMapping TypeName="dbshoppingCarModel.tOrder">
+        <MappingFragment StoreEntitySet="tOrder">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fOrderGuid" ColumnName="fOrderGuid" />
+          <ScalarProperty Name="fUserId" ColumnName="fUserId" />
+          <ScalarProperty Name="fReceiver" ColumnName="fReceiver" />
+          <ScalarProperty Name="fEmail" ColumnName="fEmail" />
+          <ScalarProperty Name="fAddress" ColumnName="fAddress" />
+          <ScalarProperty Name="fDate" ColumnName="fDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tOrderDetail">
+      <EntityTypeMapping TypeName="dbshoppingCarModel.tOrderDetail">
+        <MappingFragment StoreEntitySet="tOrderDetail">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fOrderGuid" ColumnName="fOrderGuid" />
+          <ScalarProperty Name="fUserId" ColumnName="fUserId" />
+          <ScalarProperty Name="fPId" ColumnName="fPId" />
+          <ScalarProperty Name="fName" ColumnName="fName" />
+          <ScalarProperty Name="fPrice" ColumnName="fPrice" />
+          <ScalarProperty Name="fQty" ColumnName="fQty" />
+          <ScalarProperty Name="fIsApproved" ColumnName="fIsApproved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tProduct">
+      <EntityTypeMapping TypeName="dbshoppingCarModel.tProduct">
+        <MappingFragment StoreEntitySet="tProduct">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fPId" ColumnName="fPId" />
+          <ScalarProperty Name="fName" ColumnName="fName" />
+          <ScalarProperty Name="fPrice" ColumnName="fPrice" />
+          <ScalarProperty Name="fImg" ColumnName="fImg" />
+          <ScalarProperty Name="fContent" ColumnName="fContent" />
+          <ScalarProperty Name="fQuantity" ColumnName="fQuantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

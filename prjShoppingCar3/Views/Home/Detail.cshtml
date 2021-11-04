@@ -1,0 +1,70 @@
+﻿@model prjShoppingCar3.Models.tProduct
+
+@{
+    ViewBag.Title = Model.fName + "_商品详情";
+}
+
+<h2>商品详情</h2>
+
+<div>
+
+    <hr />
+    <div>
+        <img src="~/images/@Html.DisplayFor(model => model.fImg)" style="width:100%;height:100%;   />
+    </div>
+    <div class="dl-horizontal">
+
+
+        <div>
+            <span>
+                @Html.DisplayNameFor(model => model.fPId) :
+            </span>
+
+            <span>
+                @Html.DisplayFor(model => model.fPId)
+            </span>
+        </div>
+
+        <div>
+            <span>
+                @Html.DisplayNameFor(model => model.fName) :
+            </span>
+
+            <span>
+                @Html.DisplayFor(model => model.fName)
+            </span>
+        </div>
+
+        <div>
+            <span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayNameFor(model => model.fPrice) :
+            </span>
+
+            <span>
+                @Html.DisplayFor(model => model.fPrice) 元
+            </span>
+        </div>
+        <div>
+            <span>
+                @Html.DisplayNameFor(model => model.fQuantity) :
+            </span>
+
+            <span>
+                @Html.DisplayFor(model => model.fQuantity)
+            </span>
+        </div>
+        <div>
+            <span>
+                @Html.DisplayNameFor(model => model.fContent) :
+            </span>
+
+            <span>
+                @Html.DisplayFor(model => model.fContent)
+            </span>
+        </div>
+    </div>
+</div>
+<p>
+    <a href="@Url.Action("AddCar","Member")?fPId=@Model.fPId" class="btn btn-primary">加入购物车</a>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary">回商品首页</a>
+</p>

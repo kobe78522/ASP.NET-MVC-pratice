@@ -1,0 +1,71 @@
+﻿@model IEnumerable<prjShoppingCar3.Models.tOrder>
+
+@{
+    ViewBag.Title = "訂單列表";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>訂單列表</h2>
+
+@if (Model.Count() == 0)
+{
+    <div class="alert alert-info">
+        <strong>無訂單紀錄</strong>
+    </div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fOrderGuid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fReceiver)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fDate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fOrderGuid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fUserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fReceiver)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fDate)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit")?fOrderGuid=@item.fOrderGuid" class="btn btn-warning">編輯</a>
+                    <a href="@Url.Action("Delete")?fOrderGuid=@item.fOrderGuid" class="btn btn-danger"
+                       onclick="return confirm('確定要刪除編號 @item.fOrderGuid 的訂單嗎?');">刪除</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+}
